@@ -12,7 +12,7 @@
         v-model="newTodoItemName"
         placeholder="Enter new value..."
       />
-      <button v-on:click="onAdd">Add</button>
+      <button v-on:click="add()">Add</button>
     </div>
 
     <TodoItemAddNew v-on:add="onAddNewTodoItemWithComponent" />
@@ -55,7 +55,8 @@ export default class Todo extends Vue {
     this.items = this.items.filter(g => g.id != id);
   }
 
-  private onAdd(): void {
+  // add v1
+  private add(): void {
     if (
       this.newTodoItemName !== null &&
       typeof this.newTodoItemName !== "undefined" &&
@@ -73,6 +74,7 @@ export default class Todo extends Vue {
     }
   }
 
+  // add v2 - using component and $emit
   private onAddNewTodoItemWithComponent(name: string): void {
     const maxId = Math.max(...this.items.map(x => x.id), 0);
     this.items.push({

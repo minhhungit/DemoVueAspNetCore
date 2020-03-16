@@ -43,7 +43,6 @@ export default class Todo extends Vue {
 
   private onUpdate(item: TodoItemModel): void {
     const idx = this.items.findIndex(g => g.id == item.id);
-    console.log(idx);
     this.items = [
       ...this.items.slice(0, idx),
       item,

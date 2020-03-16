@@ -1,4 +1,6 @@
-# hello-world
+# hello VUE 
+
+A demo of Todo app and...
 
 ## Project setup
 ```

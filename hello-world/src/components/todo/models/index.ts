@@ -1,1 +1,1 @@
-export * from "./todo-item-model"
+export * from "./todo-item-model";

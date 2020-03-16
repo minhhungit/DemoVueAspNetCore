@@ -1,5 +1,5 @@
-export interface TodoItemModel{
-    id: number;
-    name: string;
-    rowVersion?: string;
+export interface TodoItemModel {
+  id: number;
+  name: string;
+  rowVersion?: string;
 }

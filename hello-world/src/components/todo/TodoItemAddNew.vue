@@ -1,7 +1,20 @@
 <template>
   <div>
-    <input type="text" v-model="todoItemName" placeholder="Enter value..." />
-    <button v-on:click="addNewTodoItem()">Add using Component</button>
+    <a-form layout="inline">
+      <a-form-item label="Name"></a-form-item>
+      <a-form-item>
+        <a-input
+          type="text"
+          v-model="todoItemName"
+          placeholder="Enter value..."
+        />
+      </a-form-item>
+      <a-form-item>
+        <a-button type="primary" v-on:click="addNewTodoItem()">
+          Add using Component
+        </a-button>
+      </a-form-item>
+    </a-form>
   </div>
 </template>
 
@@ -28,7 +41,10 @@ export default class TodoItemAddNew extends Vue {
       this.$emit("add", this.todoItemName);
       this.todoItemName = null;
     } else {
-      alert("Please enter value for new todo");
+      this.$warning({
+        title: "Add todo",
+        content: "Please enter value first"
+      });
     }
   }
 }

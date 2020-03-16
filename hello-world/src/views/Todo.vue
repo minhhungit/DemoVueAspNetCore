@@ -5,6 +5,7 @@
       v-on:update="onUpdate"
       v-on:remove="onRemove"
     />
+
     <div>
       <input
         type="text"
@@ -13,6 +14,8 @@
       />
       <button v-on:click="onAdd">Add</button>
     </div>
+
+    <TodoItemAddNew v-on:add="onAddNewTodoItemWithComponent" />
   </div>
 </template>
 
@@ -20,10 +23,12 @@
 import { Vue, Component } from "vue-property-decorator";
 import TodoList from "@/components/todo/TodoList.vue";
 import { TodoItemModel } from "@/components/todo/models";
+import TodoItemAddNew from "@/components/todo/TodoItemAddNew.vue";
 
 @Component({
   components: {
-    TodoList
+    TodoList,
+    TodoItemAddNew
   }
 })
 export default class Todo extends Vue {
@@ -51,12 +56,12 @@ export default class Todo extends Vue {
   }
 
   private onAdd(): void {
-    const maxId = Math.max(...this.items.map(x => x.id), 0);
     if (
       this.newTodoItemName !== null &&
       typeof this.newTodoItemName !== "undefined" &&
       this.newTodoItemName.trim().length > 0
     ) {
+      const maxId = Math.max(...this.items.map(x => x.id), 0);
       this.items.push({
         id: (maxId === Infinity ? 0 : maxId) + 1,
         name: this.newTodoItemName
@@ -66,6 +71,14 @@ export default class Todo extends Vue {
     } else {
       alert("Please enter value for new todo");
     }
+  }
+
+  private onAddNewTodoItemWithComponent(name: string): void {
+    const maxId = Math.max(...this.items.map(x => x.id), 0);
+    this.items.push({
+      id: (maxId === Infinity ? 0 : maxId) + 1,
+      name: name
+    });
   }
 }
 </script>

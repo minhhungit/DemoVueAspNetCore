@@ -1,8 +1,8 @@
 <template>
   <ul>
-    <li v-for="group in groups" v-bind:key="group.id">
+    <li v-for="item in items" v-bind:key="item.id">
       <TodoItem
-        v-bind:group="group"
+        v-bind:item="item"
         v-on:update="onUpdate"
         v-on:remove="onRemove"
       />
@@ -13,7 +13,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import TodoItem from "./TodoItem.vue";
-import { TodoItemModel } from "@/components/groups/models/todo-item-model";
+import { TodoItemModel } from "@/components/todo/models/todo-item-model";
 
 @Component({
   components: {
@@ -21,10 +21,10 @@ import { TodoItemModel } from "@/components/groups/models/todo-item-model";
   }
 })
 export default class TodoList extends Vue {
-  @Prop() private groups!: TodoItemModel[];
+  @Prop() private items!: TodoItemModel[];
 
-  private onUpdate(group: TodoItemModel): void {
-    this.$emit("update", group);
+  private onUpdate(item: TodoItemModel): void {
+    this.$emit("update", item);
   }
 
   private onRemove(id: number): void {

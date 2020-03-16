@@ -1,13 +1,13 @@
 <template v-if="isEditMode">
   <span v-if="isEditMode">
-    <input v-model="editableGroup.name" placeholder="Enter value..." />
+    <input v-model="editableItem.name" placeholder="Enter value..." />
     <button v-on:click="update">Save</button>
   </span>
   <span v-else>
     <span>
-      {{ group.name }}
+      {{ item.id }} - {{ item.name }}
       <button v-on:click="edit()">Edit</button>
-      <button class="remove-button" v-on:click="remove(group.id)">x</button>
+      <button class="remove-button" v-on:click="remove(item.id)">x</button>
     </span>
   </span>
 </template>
@@ -25,34 +25,34 @@ import { TodoItemModel } from "./models";
 
 @Component
 export default class TodoItem extends Vue {
-  @Prop() private group!: TodoItemModel;
+  @Prop() private item!: TodoItemModel;
   private isEditMode: boolean;
-  private editableGroup?: TodoItemModel | null = null;
+  private editableItem?: TodoItemModel | null = null;
 
   constructor() {
     super();
     this.isEditMode = false;
-    this.editableGroup = null;
+    //this.editableItem = null;
   }
 
   private edit(): void {
     this.isEditMode = true;
-    this.editableGroup = this.group;
+    this.editableItem = this.item;
   }
 
-  private remove(groupId: number): void {
-    this.$emit("remove", groupId);
+  private remove(id: number): void {
+    this.$emit("remove", id);
     this.discard();
   }
 
   private update(): void {
-    this.$emit("update", this.editableGroup);
+    this.$emit("update", this.editableItem);
     this.discard();
   }
 
   private discard(): void {
     this.isEditMode = false;
-    this.editableGroup = null;
+    this.editableItem = null;
   }
 }
 </script>

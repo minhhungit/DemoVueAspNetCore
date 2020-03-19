@@ -6,10 +6,10 @@ import { RootState } from './state';
 Vue.use(Vuex);
 
 const options: StoreOptions<RootState> = {
-    state: {},
-    modules: {
-        todoModule,
-    },
+  state: {},
+  modules: {
+    todoModule,
+  },
 };
 
 export default new Vuex.Store(options);

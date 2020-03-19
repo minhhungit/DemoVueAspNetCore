@@ -5,10 +5,10 @@ import { actions } from './actions';
 import { mutations } from './mutations';
 
 export const todoModule: Module<TodoState, RootState> = {
-    namespaced: true,
-    actions,
-    mutations,
-    state: {
-        todoItems: [],
-    },
+  namespaced: true,
+  actions,
+  mutations,
+  state: {
+    todoItems: [],
+  },
 };

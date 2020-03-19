@@ -1,17 +1,31 @@
 <template v-if="isEditMode">
-  <span v-if="isEditMode">
-    <input v-model="editableItem.name" placeholder="Enter value..." />
-    <button type="primary" v-on:click="update">Save</button>
-  </span>
-  <span v-else>
-    <span>
-      {{ item.id }} - {{ item.name }}
-      <button v-on:click="edit()">Edit</button>
-      <button type="primary" size="small" class="remove-button" v-on:click="remove(item.id)">
-        x
-      </button>
-    </span>
-  </span>
+  <tr>
+    <td>
+      <strong>{{ item.id }}</strong>
+    </td>
+    <td style="min-width: 300px; text-align: left">
+      <span v-if="isEditMode">
+        <input v-model="editableItem.name" placeholder="Enter value..." />
+      </span>
+      <span v-else>
+        <span>{{ item.name }}</span>
+      </span>
+    </td>
+    <td style="min-width: 150px; text-align: left">
+      <span v-if="isEditMode">
+        <button v-on:click="update">Save</button>
+        <button v-on:click="discard">Discard</button>
+      </span>
+      <span v-else>
+        <span>
+          <button v-on:click="edit()">Edit</button>
+          <button size="small" class="remove-button" v-on:click="remove(item.id)">
+            x
+          </button>
+        </span>
+      </span>
+    </td>
+  </tr>
 </template>
 
 <style scoped lang="scss">

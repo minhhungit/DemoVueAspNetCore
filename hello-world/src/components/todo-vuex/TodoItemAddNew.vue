@@ -18,13 +18,6 @@
   </div>
 </template>
 
-<style scoped lang="scss">
-// .remove-button {
-//   color: red;
-//   margin-left: 5px;
-// }
-</style>
-
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 

@@ -1,8 +1,8 @@
 <template>
   <ul>
-    <li v-for="item in items" v-bind:key="item.id">
+    <li v-for="tdi in items" v-bind:key="tdi.id">
       <TodoItem
-        v-bind:item="item"
+        v-bind:item="tdi"
         v-on:update="onUpdate"
         v-on:remove="onRemove"
       />
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 import TodoItem from "./TodoItem.vue";
 import { TodoItemModel } from "@/components/todo-vuex/models/todo-item-model";
 
@@ -24,11 +24,11 @@ export default class TodoList extends Vue {
   @Prop() private items!: TodoItemModel[];
 
   private onUpdate(item: TodoItemModel): void {
-    this.$emit("update", item);
+    this.$store.dispatch("todoModule/update", item);
   }
 
   private onRemove(id: number): void {
-    this.$emit("remove", id);
+    this.$store.dispatch("todoModule/remove", id);
   }
 }
 </script>

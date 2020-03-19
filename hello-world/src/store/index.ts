@@ -1,11 +1,15 @@
 import Vue from "vue";
-import Vuex from "vuex";
+import Vuex, { StoreOptions } from "vuex";
+import { todoModule } from "./modules/todo-vuex";
+import { RootState } from "./state";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const options: StoreOptions<RootState> = {
   state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
-});
+  modules: {
+    todoModule
+  }
+};
+
+export default new Vuex.Store(options);

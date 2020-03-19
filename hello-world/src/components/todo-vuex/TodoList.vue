@@ -20,11 +20,11 @@ export default class TodoList extends Vue {
   @Prop() private items!: TodoItemModel[];
 
   private onUpdate(item: TodoItemModel): void {
-    this.$store.dispatch('todoModule/update', item);
+    this.$emit('update', item);
   }
 
   private onRemove(id: number): void {
-    this.$store.dispatch('todoModule/remove', id);
+    this.$emit('remove', id);
   }
 }
 </script>

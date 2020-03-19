@@ -2,6 +2,13 @@ import { ActionTree } from 'vuex';
 import { TodoState, TodoItem } from './state';
 import { RootState } from '@/store/state';
 
+export const actionTypes = {
+  LOAD_TODO_ITEMS: 'todoModule/loadTodoItems',
+  ADD_TODO: 'todoModule/add',
+  REMOVE_TODO: 'todoModule/remove',
+  UPDATE_TODO: 'todoModule/update',
+};
+
 export const actions: ActionTree<TodoState, RootState> = {
   // @TODO: fetch data from api
   loadTodoItems({ commit }): void {

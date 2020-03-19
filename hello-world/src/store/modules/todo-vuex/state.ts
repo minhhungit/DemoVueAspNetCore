@@ -1,9 +1,9 @@
 export interface TodoItem {
-  id: number;
-  name: string;
-  rowVersion?: string;
+    id: number;
+    name: string;
+    rowVersion?: string;
 }
 
 export interface TodoState {
-  todoItems: TodoItem[];
+    todoItems: TodoItem[];
 }

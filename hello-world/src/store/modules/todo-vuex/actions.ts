@@ -2,11 +2,18 @@ import { ActionTree } from 'vuex';
 import { TodoState, TodoItem } from './state';
 import { RootState } from '@/store/state';
 
-export const actionTypes = {
+export const actionTypesWithModuleName = {
   LOAD_TODO_ITEMS: 'todoModule/loadTodoItems',
   ADD_TODO: 'todoModule/add',
   REMOVE_TODO: 'todoModule/remove',
   UPDATE_TODO: 'todoModule/update',
+};
+
+export const actionTypes = {
+  LOAD_TODO_ITEMS: 'loadTodoItems',
+  ADD_TODO: 'add',
+  REMOVE_TODO: 'remove',
+  UPDATE_TODO: 'update',
 };
 
 export const actions: ActionTree<TodoState, RootState> = {

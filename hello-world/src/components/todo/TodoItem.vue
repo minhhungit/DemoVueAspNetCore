@@ -9,6 +9,7 @@
       <button v-on:click="edit()">Edit</button>
       <button class="remove-button" v-on:click="remove(item.id)">x</button>
     </span>
+    <button v-on:click="increaseCounter(item.id)" style="margin-left: 10px">Increase Counter</button>
   </span>
 </template>
 
@@ -53,6 +54,10 @@ export default class TodoItem extends Vue {
   private discard(): void {
     this.isEditMode = false;
     this.editableItem = null;
+  }
+
+  private increaseCounter(id: number): void {
+    this.$emit('increaseCounterEvt', id);
   }
 }
 </script>

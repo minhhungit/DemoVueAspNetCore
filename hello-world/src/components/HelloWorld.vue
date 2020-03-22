@@ -86,10 +86,13 @@
       </li>
     </ul>
 
-    <div id="app">
-      <input type="text" v-model.lazy="message" placeholder="nhập dữ liệu..." />
-      <p>message = {{ message }}</p>
-    </div>
+    <h3>Lazy</h3>
+    <input type="text" v-model.lazy="messageLazy" v-model.trim="messageLazy" placeholder="nhập dữ liệu..." />
+    <p>message = {{ messageLazy }}</p>
+
+    <h3>Number</h3>
+    <input type="text" v-model.number="messageNumber" placeholder="nhập dữ liệu..." />
+    <p>message = {{ messageNumber }}</p>
   </div>
 </template>
 
@@ -100,12 +103,14 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
 
-  private message!: string;
+  private messageLazy!: string;
+  private messageNumber!: number;
 
   constructor() {
     super();
 
-    this.message = 'hello';
+    this.messageLazy = 'hello';
+    this.messageNumber = 0;
   }
 }
 </script>

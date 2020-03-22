@@ -85,6 +85,11 @@
         <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a>
       </li>
     </ul>
+
+    <div id="app">
+      <input type="text" v-model.lazy="message" placeholder="nhập dữ liệu..." />
+      <p>message = {{ message }}</p>
+    </div>
   </div>
 </template>
 
@@ -94,6 +99,14 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
+
+  private message!: string;
+
+  constructor() {
+    super();
+
+    this.message = 'hello';
+  }
 }
 </script>
 

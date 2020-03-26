@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <fragment>
     <ul>
       <li v-for="item in items" v-bind:key="item.id">
         <TodoItem
@@ -11,7 +11,9 @@
       </li>
     </ul>
     <textarea rows="5" v-model="countersText" />
-  </span>
+    <div>Test</div>
+    <div>Hello</div>
+  </fragment>
 </template>
 
 <script lang="ts">
